@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/cate/cate",
+    "pages/cart/cart",
+    "pages/my/my"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "万千紧固件",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "static/img/tabBa/index.png",
+        "selectedIconPath": "static/img/tabBa/indexed.png"
+      },
+      {
+        "pagePath": "pages/cate/cate",
+        "text": "分类",
+        "iconPath": "static/img/tabBa/classinfication.png",
+        "selectedIconPath": "static/img/tabBa/classinficationed.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "static/img/tabBa/shop.png",
+        "selectedIconPath": "static/img/tabBa/shoped.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/img/tabBa/my.png",
+        "selectedIconPath": "static/img/tabBa/myself.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

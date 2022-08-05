@@ -1,0 +1,72 @@
+{
+	// 整体路由
+	"pages": [{
+		"path": "pages/home/home",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/cate/cate",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/cart/cart",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/my/my",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}],
+	// 全局样式，窗口样式等。
+	"globalStyle": {
+		//导航条文本颜色
+		"navigationBarTextStyle": "black",
+		//导航条标题文字
+		"navigationBarTitleText": "万千紧固件",
+		//导航条
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	},
+	// 底部导航栏路由
+	"tabBar": {
+		"list": [{
+				"pagePath": "pages/home/home",
+				"text": "首页",
+				"iconPath": "static/img/tabBa/index.png",
+				"selectedIconPath": "static/img/tabBa/indexed.png"
+			},
+			{
+				"pagePath": "pages/cate/cate",
+			 "text": "分类",
+				"iconPath": "static/img/tabBa/classinfication.png",
+				"selectedIconPath": "static/img/tabBa/classinficationed.png"
+			},
+			{
+				"pagePath": "pages/cart/cart",
+				"text": "购物车",
+				"iconPath": "static/img/tabBa/shop.png",
+				"selectedIconPath": "static/img/tabBa/shoped.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "我的",
+				"iconPath": "static/img/tabBa/my.png",
+				"selectedIconPath": "static/img/tabBa/myself.png"
+			}]
+	}
+}
