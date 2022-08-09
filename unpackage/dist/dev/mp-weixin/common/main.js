@@ -20,6 +20,15 @@ wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;_vue.default.config.p
 
 uni.$http = _requestMiniprogram.$http;
 
+//封装展示消息提示
+uni.$showMsg = function () {var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '数据加载失败！';var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1500;
+  uni.showToast({
+    title: title,
+    duration: duration,
+    icon: 'none' });
+
+};
+
 //请求根路径
 _requestMiniprogram.$http.baseUrl = 'https://api-hmugo-web.itheima.net';
 

@@ -9,6 +9,15 @@ Vue.config.productionTip = false
 
 uni.$http = $http
 
+//封装展示消息提示
+uni.$showMsg = function(title = '数据加载失败！',duration = 1500){
+	uni.showToast({
+		title,
+		duration,
+		icon:'none'
+	})
+}
+
 //请求根路径
 $http.baseUrl = 'https://api-hmugo-web.itheima.net'
 

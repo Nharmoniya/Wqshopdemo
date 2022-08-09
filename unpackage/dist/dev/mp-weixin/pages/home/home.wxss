@@ -13,4 +13,13 @@ swiper image {
   height: 100%;
   border-radius: 30rpx;
 }
+.nav-list {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+.nav-list .nav-img {
+  width: 128rpx;
+  height: 140rpx;
+}
 

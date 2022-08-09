@@ -3,38 +3,47 @@
 	"pages": [{
 		"path": "pages/home/home",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
 		}
 
 	}, {
 		"path": "pages/cate/cate",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
 		}
 
 	}, {
 		"path": "pages/cart/cart",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
 		}
 
 	}, {
 		"path": "pages/my/my",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
+
 		}
 
 	}],
+	// 定义分包结构
+	"subPackages": [
+		{
+			"root": "subpkg",
+			"pages": [{
+                    "path" : "goods_detail/goods_detail",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+		}
+	],
 	// 全局样式，窗口样式等。
 	"globalStyle": {
 		//导航条文本颜色
 		"navigationBarTextStyle": "black",
 		//导航条标题文字
-		"navigationBarTitleText": "万千紧固件",
+		"navigationBarTitleText": "Wqshop-demo",
 		//导航条
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
