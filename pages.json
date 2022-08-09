@@ -35,6 +35,15 @@
                 }
                 
                 }
+                ,{
+                    "path" : "good_list/good_list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
 		}
 	],
