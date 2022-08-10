@@ -3,9 +3,9 @@
 /* 水平间距 */
 swiper {
   height: 330rpx;
-  padding: 10px;
   border-radius: 30rpx;
   overflow: hidden;
+  padding: 10px;
 }
 swiper .swiper-item,
 swiper image {
