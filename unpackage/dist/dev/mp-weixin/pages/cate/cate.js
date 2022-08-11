@@ -171,7 +171,9 @@ var _default =
       //左侧导航栏选中
       active: 0,
       //二级分类列表
-      cateLevel2: [] };
+      cateLevel2: [],
+      //定义滚动条顶部距离
+      scrollTop: 0 };
 
   },
   onLoad: function onLoad() {
@@ -194,6 +196,13 @@ var _default =
     activeChange: function activeChange(i) {
       this.active = i;
       this.cateLevel2 = this.cateList[i].children;
+      //让scrollTop的值在0和1之间切换
+      this.scrollTop = this.scrollTop ? 0 : 1;
+    },
+    gotoGoodsList: function gotoGoodsList(item3) {
+      uni.navigateTo({
+        url: '/subpkg/good_list/good_list?cid=' + item3.cat_id });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

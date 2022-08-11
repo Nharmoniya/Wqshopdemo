@@ -8,12 +8,12 @@
 				</block>
 			</scroll-view>
 			<!-- 右侧滚动导航栏 -->
-			<scroll-view class="right-scroll-view" scroll-y :style="{ height: wh + 'px' }">
+			<scroll-view class="right-scroll-view" scroll-y :style="{ height: wh + 'px' }" :scroll-top="scrollTop">
 				<view class="cate-lv2" v-for="(item2, i2) in cateLevel2" :key="i2">
 					<view class="cate-lv2-title">/ {{item2.cat_name}} /</view>
 					<!-- 三级分类item项 -->
 					<view class="cate-lv3-list">
-					<view class="cate-lv3-item" v-for="(item3,i3) in item2.children" :key="i3">
+					<view class="cate-lv3-item" v-for="(item3,i3) in item2.children" :key="i3" @click="gotoGoodsList(item3)">
 						<!-- 图片 -->
 						<image :src="item3.cat_icon"></image>
 						<!-- 文本 -->
@@ -38,6 +38,8 @@ export default {
 			active:0,
 			//二级分类列表
 			cateLevel2:[],
+			//定义滚动条顶部距离
+			scrollTop:0,
 		};
 	},
 	onLoad() {
@@ -60,7 +62,14 @@ export default {
 		activeChange(i){
 			this.active = i
 			this.cateLevel2 = this.cateList[i].children
+			//让scrollTop的值在0和1之间切换
+			this.scrollTop = this.scrollTop ? 0:1
 		},
+		gotoGoodsList(item3){
+			uni.navigateTo({
+				url:'/subpkg/good_list/good_list?cid='+item3.cat_id
+			})
+		}
 	}
 };
 </script>
