@@ -29,4 +29,9 @@
 		color: #333;
 		padding: 10px;
 	}
+	html,body{
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
 </style>
