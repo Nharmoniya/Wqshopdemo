@@ -2,51 +2,55 @@
 	// 整体路由
 	"pages": [{
 		"path": "pages/home/home",
-		"style": {
-		}
+		"style": {}
 
 	}, {
 		"path": "pages/cate/cate",
 		"style": {
+			"navigationBarTitleText": "商品分类"
 		}
 
 	}, {
 		"path": "pages/cart/cart",
 		"style": {
+			"navigationBarTitleText": "购物车"
 		}
 
 	}, {
 		"path": "pages/my/my",
 		"style": {
-
+			"navigationBarTitleText": "我的"
 		}
 
 	}],
 	// 定义分包结构
-	"subPackages": [
-		{
-			"root": "subpkg",
-			"pages": [{
-                    "path" : "goods_detail/goods_detail",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "good_list/good_list",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
-		}
-	],
+	"subPackages": [{
+		"root": "subpkg",
+		"pages": [{
+			"path": "goods_detail/goods_detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "good_list/good_list",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 150,
+				"backgroundColor": "#F8F8F8"
+			}
+
+		}, {
+			"path": "search/search",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}]
+	}],
 	// 全局样式，窗口样式等。
 	"globalStyle": {
 		//导航条文本颜色
@@ -70,7 +74,7 @@
 			},
 			{
 				"pagePath": "pages/cate/cate",
-			 "text": "分类",
+				"text": "分类",
 				"iconPath": "static/img/tabBa/classinfication.png",
 				"selectedIconPath": "static/img/tabBa/classinficationed.png"
 			},
@@ -85,6 +89,7 @@
 				"text": "我的",
 				"iconPath": "static/img/tabBa/my.png",
 				"selectedIconPath": "static/img/tabBa/myself.png"
-			}]
+			}
+		]
 	}
 }

@@ -3,5 +3,18 @@
   "projectname": "万千商城-demo-1",
   "setting": {
     "compileHotReLoad": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "subpkg/goods_detail/goods_detail",
+          "query": "goods_id=17924",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }
