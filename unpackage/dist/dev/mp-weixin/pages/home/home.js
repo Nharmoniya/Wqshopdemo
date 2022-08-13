@@ -107,7 +107,7 @@ var components
 try {
   components = {
     mysearch: function() {
-      return __webpack_require__.e(/*! import() | components/mysearch/mysearch */ "components/mysearch/mysearch").then(__webpack_require__.bind(null, /*! @/components/mysearch/mysearch.vue */ 64))
+      return __webpack_require__.e(/*! import() | components/mysearch/mysearch */ "components/mysearch/mysearch").then(__webpack_require__.bind(null, /*! @/components/mysearch/mysearch.vue */ 66))
     }
   }
 } catch (e) {
