@@ -3,9 +3,9 @@
 /* 水平间距 */
 swiper {
   height: 330rpx;
-  padding: 10px;
   border-radius: 30rpx;
   overflow: hidden;
+  padding: 10px;
 }
 swiper .swiper-item,
 swiper image {
@@ -35,5 +35,11 @@ swiper image {
 .floor-img-box {
   display: flex;
   padding-left: 10rpx;
+}
+.search-box {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
