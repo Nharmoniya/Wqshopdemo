@@ -12,15 +12,4 @@
 .cart-title .cart-title-text {
   margin-left: 10px;
 }
-.goods-item-left {
-  margin-right: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.goods-item-left .goods-pic {
-  width: 100px;
-  height: 100px;
-  display: block;
-}
 

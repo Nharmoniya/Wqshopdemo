@@ -1,44 +1,39 @@
 <template>
-	<!-- 购物车商品列表的标题区域 -->
-	<view class="cart-title">
-		<!-- 左侧的图标 -->
-		<uni-icons type="shop" size="18"></uni-icons>
-		<!-- 描述文本 -->
-		<text class="cart-title-text">购物车</text>
+	<view>
+		<!-- 购物车商品列表的标题区域 -->
+		<view class="cart-title">
+			<!-- 左侧的图标 -->
+			<uni-icons type="shop" size="18"></uni-icons>
+			<!-- 描述文本 -->
+			<text class="cart-title-text">购物车</text>
+		</view>
 		<!-- 商品列表区域 -->
-		<block v-for="(goods, i) in cart" :key="i">
-		  <my-goods :goods="goods"></my-goods>
-		  <!-- 商品左侧图片区域 -->
-		  <view class="goods-item-left">
-		    <radio checked color="#058b8c"></radio>
-		    <image :src="goods.goods_small_logo || defaultPic" class="goods-pic"></image>
-		  </view>
-		</block>
+		<block v-for="(goods, i) in cart" :key="i"><mygoods :goods="goods" :show-radio="true" @radio-change="radioChangeHandler" :show-num="true" @num-change="numberChangeHandler"></mygoods></block>
 	</view>
-	
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import badgeMix from '@/mixins/tabbar-badge.js';
 
 export default {
 	mixins: [badgeMix],
 	computed: {
-		...mapState('m_cart', ['cart']),
+		...mapState('m_cart', ['cart'])
 	},
-	data() {
-		return {};
-	},
-	onShow() {
-		this.setBadge();
+	onLoad() {
+		console.log('cart的值');
+		console.log(this.cart);
 	},
 	methods: {
-		setBadge() {
-			uni.setTabBarBadge({
-				index: 2,
-				text: this.total + ''
-			});
+		...mapMutations('m_cart', ['updateGoodsState','updateGoodsCount']),
+		// 商品的勾选状态发生了变化
+		radioChangeHandler(e) {
+			this.updateGoodsState(e);
+		},
+		// 商品的数量发生了变化
+		numberChangeHandler(e) {
+			this.updateGoodsCount(e);
 		}
 	}
 };
@@ -55,17 +50,5 @@ export default {
 	.cart-title-text {
 		margin-left: 10px;
 	}
-}
-.goods-item-left {
-  margin-right: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .goods-pic {
-    width: 100px;
-    height: 100px;
-    display: block;
-  }
 }
 </style>

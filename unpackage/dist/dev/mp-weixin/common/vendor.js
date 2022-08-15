@@ -2778,7 +2778,7 @@ var $http = new Request();exports.$http = $http;
 // 导出一个 mixin 对象
 var _default = {
   computed: _objectSpread({},
-  (0, _vuex.mapGetters)('m_cart', ['total'])),
+  (0, _vuex.mapState)('m_cart', ['cart'])),
 
   onShow: function onShow() {
     // 在页面刚展示的时候，设置数字徽标
@@ -2789,7 +2789,7 @@ var _default = {
       // 调用 uni.setTabBarBadge() 方法，为购物车设置右上角的徽标
       uni.setTabBarBadge({
         index: 2,
-        text: this.total + '' // 注意：text 的值必须是字符串，不能是数字
+        text: this.cart.length + '' // 注意：text 的值必须是字符串，不能是数字
       });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
@@ -4090,23 +4090,51 @@ module.exports = index_cjs;
 
   state: function state() {return {
       //用来存储购物车信息
+      // { goods_id, goods_name, goods_price, goods_count, goods_small_logo, goods_state }
       cart: JSON.parse(uni.getStorageSync('cart') || '[]') };},
 
 
   mutations: {
-    addtoCart: function addtoCart(state, goods) {
+    addToCart: function addToCart(state, goods) {
       // 根据提交的商品的Id，查询购物车中是否存在这件商品
       // 如果不存在，则 findResult 为 undefined；否则，为查找到的商品信息对象
       var findResult = state.cart.find(function (x) {return x.goods_id === goods.goods_id;});
 
       if (!findResult) {
-        //如果购物车中没有商品，则直接push
+        // 如果购物车中没有这件商品，则直接 push
         state.cart.push(goods);
       } else {
-        //如果购物车中有这件商品，则只更新数量即可
+        // 如果购物车中有这件商品，则只更新数量即可
         findResult.goods_count++;
       }
-      this.commit('m_cart');
+
+      // 通过 commit 方法，调用 m_cart 命名空间下的 saveToStorage 方法
+      this.commit('m_cart/saveToStorage');
+    },
+    // 更新购物车中商品的勾选状态
+    updateGoodsState: function updateGoodsState(state, goods) {
+      // 根据 goods_id 查询购物车中对应商品的信息对象
+      var findResult = state.cart.find(function (x) {return x.goods_id === goods.goods_id;});
+
+      // 有对应的商品信息对象
+      if (findResult) {
+        // 更新对应商品的勾选状态
+        findResult.goods_state = goods.goods_state;
+        // 持久化存储到本地
+        this.commit('m_cart/saveToStorage');
+      }
+    },
+    // 更新购物车中商品的数量
+    updateGoodsCount: function updateGoodsCount(state, goods) {
+      // 根据 goods_id 查询购物车中对应商品的信息对象
+      var findResult = state.cart.find(function (x) {return x.goods_id === goods.goods_id;});
+
+      if (findResult) {
+        // 更新对应商品的数量
+        findResult.goods_count = goods.goods_count;
+        // 持久化存储到本地
+        this.commit('m_cart/saveToStorage');
+      }
     },
     saveToStorage: function saveToStorage(state) {
       uni.setStorageSync('cart', JSON.stringify(state.cart));

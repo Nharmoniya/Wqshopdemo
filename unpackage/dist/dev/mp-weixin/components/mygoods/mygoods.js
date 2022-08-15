@@ -106,6 +106,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniNumberBox: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-number-box/components/uni-number-box/uni-number-box */ "uni_modules/uni-number-box/components/uni-number-box/uni-number-box").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-number-box/components/uni-number-box/uni-number-box.vue */ 142))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -173,6 +196,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
 var _default =
 {
   name: 'mygoods',
@@ -191,7 +217,39 @@ var _default =
   props: {
     //商品信息的对象
     goods: {
-      type: Object } } };exports.default = _default;
+      type: Object },
+
+    // 是否展示图片左侧的 radio
+    showRadio: {
+      type: Boolean,
+      // 如果外界没有指定 show-radio 属性的值，则默认不展示 radio 组件
+      default: false },
+
+    //是否展示价格右侧的Numberbox组件
+    showNum: {
+      type: Boolean,
+      default: false } },
+
+
+  methods: {
+    //radio组件的点击事件处理函数
+    radioClickHandler: function radioClickHandler() {
+      //通过$emit传事件对props进行修改
+      this.$emit('radio-change', {
+        //商品的ID
+        goods_id: this.goods.goods_id,
+        //商品最新的勾选状态
+        goods_state: !this.goods.goods_state });
+
+    },
+    numChangeHandler: function numChangeHandler(val) {
+      this.$emit('num-change', {
+        //商品的id
+        goods_id: this.goods.goods_id,
+        //商品的数量
+        goods_count: +val });
+
+    } } };exports.default = _default;
 
 /***/ })
 

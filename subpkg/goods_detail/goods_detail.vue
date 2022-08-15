@@ -35,9 +35,11 @@
 </template>
 
 <script>
-import { mapMutations,mapState} from 'vuex';
-
+import { mapMutations, mapState } from 'vuex';
+import badgeMix from '@/mixins/tabbar-badge.js';
 export default {
+	// 将 badgeMix 混入到当前的页面中进行使用
+	mixins: [badgeMix],
 	data() {
 		return {
 			//商品详情对象
@@ -76,7 +78,7 @@ export default {
 		this.getGoodsDeatil(goods_id);
 	},
 	methods: {
-		...mapMutations('m_cart',['addToCart']),
+		...mapMutations('m_cart', ['addToCart']),
 		//定义商品详情数据的方法
 		async getGoodsDeatil(goods_id) {
 			const { data: res } = await uni.$http.get('/api/public/v1/goods/detail', { goods_id });
@@ -105,6 +107,11 @@ export default {
 		},
 		buttonClick(e) {
 			if (e.content.text === '加入购物车') {
+				uni.showLoading({
+					title:'正在加入购物车中...',
+					//使用遮罩防止穿透
+					mask:true
+				})
 				const goods = {
 					goods_id: this.goods_info.goods_id, // 商品的Id
 					goods_name: this.goods_info.goods_name, // 商品的名称
@@ -113,26 +120,30 @@ export default {
 					goods_small_logo: this.goods_info.goods_small_logo, // 商品的图片
 					goods_state: true // 商品的勾选状态
 				};
+				//设置延迟防止持续加入购物车
+				setTimeout(()=>{
+				  this.addToCart(goods);
+				  uni.hideLoading();
+				},500)
 			}
-			this.addToCart(goods);
 		}
 	},
 	computed: {
 		...mapState('m_cart', ['cart'])
 	},
-	watch:{
+	watch: {
 		//监听total的值变化
 		total: {
-		      // handler 属性用来定义侦听器的 function 处理函数
-		      handler(newVal) {
-		         const findResult = this.options.find(x => x.text === '购物车')
-		         if (findResult) {
-		            findResult.info = newVal
-		         }
-		      },
-		      // immediate 属性用来声明此侦听器，是否在页面初次加载完毕后立即调用
-		      immediate: true
-		   }
+			// handler 属性用来定义侦听器的 function 处理函数
+			handler(newVal) {
+				const findResult = this.options.find(x => x.text === '购物车');
+				if (findResult) {
+					findResult.info = newVal;
+				}
+			},
+			// immediate 属性用来声明此侦听器，是否在页面初次加载完毕后立即调用
+			immediate: true
+		}
 	}
 };
 </script>

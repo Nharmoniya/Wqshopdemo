@@ -128,6 +128,9 @@ try {
   components = {
     uniIcons: function() {
       return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 76))
+    },
+    mygoods: function() {
+      return __webpack_require__.e(/*! import() | components/mygoods/mygoods */ "components/mygoods/mygoods").then(__webpack_require__.bind(null, /*! @/components/mygoods/mygoods.vue */ 95))
     }
   }
 } catch (e) {
@@ -184,13 +187,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -213,20 +210,20 @@ var _tabbarBadge = _interopRequireDefault(__webpack_require__(/*! @/mixins/tabba
   computed: _objectSpread({},
   (0, _vuex.mapState)('m_cart', ['cart'])),
 
-  data: function data() {
-    return {};
+  onLoad: function onLoad() {
+    console.log('cart的值');
+    console.log(this.cart);
   },
-  onShow: function onShow() {
-    this.setBadge();
-  },
-  methods: {
-    setBadge: function setBadge() {
-      uni.setTabBarBadge({
-        index: 2,
-        text: this.total + '' });
-
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+  methods: _objectSpread(_objectSpread({},
+  (0, _vuex.mapMutations)('m_cart', ['updateGoodsState', 'updateGoodsCount'])), {}, {
+    // 商品的勾选状态发生了变化
+    radioChangeHandler: function radioChangeHandler(e) {
+      this.updateGoodsState(e);
+    },
+    // 商品的数量发生了变化
+    numberChangeHandler: function numberChangeHandler(e) {
+      this.updateGoodsCount(e);
+    } }) };exports.default = _default;
 
 /***/ })
 
