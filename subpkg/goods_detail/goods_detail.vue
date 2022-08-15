@@ -104,7 +104,7 @@ export default {
 			}
 		},
 		buttonClick(e) {
-			if (e.content.text === '购物车') {
+			if (e.content.text === '加入购物车') {
 				const goods = {
 					goods_id: this.goods_info.goods_id, // 商品的Id
 					goods_name: this.goods_info.goods_name, // 商品的名称

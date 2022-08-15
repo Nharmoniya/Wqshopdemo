@@ -1,1 +1,1 @@
-<view>Cart</view>
+<view class="cart-title"><uni-icons vue-id="1775f8c0-1" type="shop" size="18" bind:__l="__l"></uni-icons><text class="cart-title-text">购物车</text><block wx:for="{{cart}}" wx:for-item="goods" wx:for-index="i" wx:key="i"><block><my-goods vue-id="{{'1775f8c0-2-'+i}}" goods="{{goods}}" bind:__l="__l"></my-goods><view class="goods-item-left"><radio checked="{{true}}" color="#058b8c"></radio><image class="goods-pic" src="{{goods.goods_small_logo||defaultPic}}"></image></view></block></block></view>
