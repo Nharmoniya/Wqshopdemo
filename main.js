@@ -33,10 +33,17 @@ $http.afterRequest = function(options){
 	uni.hideLoading()
 }
 
+//导入store的实例对象
+import store from './store/store.js'
+
+
+
 App.mpType = 'app'
 
 const app = new Vue({
-    ...App
+    ...App,
+	//将store挂载在Vue实例上
+	store,
 })
 app.$mount()
 // #endif

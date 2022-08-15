@@ -22,7 +22,7 @@
   display: block;
   width: 3px;
   height: 30px;
-  background-color: #058B8C;
+  background-color: #058b8c;
   position: absolute;
   left: 0;
   top: 50%;

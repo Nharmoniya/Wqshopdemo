@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import badgeMix from '@/mixins/tabbar-badge.js';
 export default {
 	data() {
 		return {
@@ -74,15 +75,16 @@ export default {
 				url: '/subpkg/good_list/good_list?cid=' + item3.cat_id
 			});
 			uni.setNavigationBarTitle({
-				title:item3.cat_name
-			})
+				title: item3.cat_name
+			});
 		},
 		gotoSearch() {
 			uni.navigateTo({
 				url: '/subpkg/search/search'
 			});
 		}
-	}
+	},
+	mixins: [badgeMix]
 };
 </script>
 
@@ -110,7 +112,7 @@ export default {
 					display: block;
 					width: 3px;
 					height: 30px;
-					background-color: #058B8C;
+					background-color: #058b8c;
 					position: absolute;
 					left: 0;
 					top: 50%;
@@ -119,7 +121,7 @@ export default {
 			}
 		}
 	}
-	.right-scroll-view{
+	.right-scroll-view {
 		background-color: white;
 	}
 }

@@ -1,9 +1,6 @@
 <template>
-
 	<view class="swof">
-		<view class="search-box">
-		  <mysearch @click="gotoSearch"></mysearch>
-		</view>
+		<view class="search-box"><mysearch @click="gotoSearch"></mysearch></view>
 		<!-- 轮播图区域 -->
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
 			<!-- 循环渲染轮播图item -->
@@ -29,20 +26,19 @@
 					</navigator>
 					<!-- 右侧 4 个小图片的盒子 -->
 					<view class="right-img-box">
-			 		<navigator class="right-img-item" v-for="(item2, i2) in item.product_list" :key="i2" v-if="i2 !== 0" :url="item2.url">
+						<navigator class="right-img-item" v-for="(item2, i2) in item.product_list" :key="i2" v-if="i2 !== 0" :url="item2.url">
 							<image :src="item2.image_src" mode="widthFix" :style="{ width: item2.image_width + 'rpx' }"></image>
 						</navigator>
 					</view>
 				</view>
 			</view>
 		</view>
-		<view>
-			<p class="foot-description">此项目仅为演示系统，接口地址以及实际内容都已经替换成开源资源</p>
-		</view>
+		<view><p class="foot-description">此项目仅为演示系统，接口地址以及实际内容都已经替换成开源资源</p></view>
 	</view>
 </template>
 
 <script>
+import badgeMix from '@/mixins/tabbar-badge.js';
 export default {
 	data() {
 		return {
@@ -84,23 +80,23 @@ export default {
 			this.floorList = res.message;
 		},
 		gotoSearch() {
-		  uni.navigateTo({
-		    url: '/subpkg/search/search'
-		  })
+			uni.navigateTo({
+				url: '/subpkg/search/search'
+			});
 		}
-	}
+	},
+	mixins: [badgeMix]
 };
 </script>
 
 <style lang="scss">
-swof{
-
+swof {
 }
 swiper {
 	height: 330rpx;
 	border-radius: 30rpx;
 	overflow: hidden;
-	   padding: 10px;
+	padding: 10px;
 	.swiper-item,
 	image {
 		width: 100%;
@@ -133,14 +129,14 @@ swiper {
 	padding-left: 10rpx;
 }
 .search-box {
-  // 设置定位效果为“吸顶”
-  position: sticky;
-  // 吸顶的“位置”
-  top: 0;
-  // 提高层级，防止被轮播图覆盖
-  z-index: 999;
+	// 设置定位效果为“吸顶”
+	position: sticky;
+	// 吸顶的“位置”
+	top: 0;
+	// 提高层级，防止被轮播图覆盖
+	z-index: 999;
 }
-.foot-description{
+.foot-description {
 	margin-top: 5rpx;
 	text-align: center;
 	color: gray;
