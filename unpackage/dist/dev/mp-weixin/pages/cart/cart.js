@@ -129,6 +129,12 @@ try {
     uniIcons: function() {
       return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 76))
     },
+    uniSwipeAction: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action */ "uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action.vue */ 143))
+    },
+    uniSwipeActionItem: function() {
+      return Promise.all(/*! import() | uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item.vue */ 148))
+    },
     mygoods: function() {
       return __webpack_require__.e(/*! import() | components/mygoods/mygoods */ "components/mygoods/mygoods").then(__webpack_require__.bind(null, /*! @/components/mygoods/mygoods.vue */ 95))
     }
@@ -187,7 +193,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
 
 
 
@@ -207,15 +219,23 @@ var _tabbarBadge = _interopRequireDefault(__webpack_require__(/*! @/mixins/tabba
 
 {
   mixins: [_tabbarBadge.default],
+  data: function data() {
+    return {
+      options: [
+      {
+        text: '删除', //显示的文本内容
+        style: {
+          backgroundColor: '#058b8c' } }] };
+
+
+
+
+  },
   computed: _objectSpread({},
   (0, _vuex.mapState)('m_cart', ['cart'])),
 
-  onLoad: function onLoad() {
-    console.log('cart的值');
-    console.log(this.cart);
-  },
   methods: _objectSpread(_objectSpread({},
-  (0, _vuex.mapMutations)('m_cart', ['updateGoodsState', 'updateGoodsCount'])), {}, {
+  (0, _vuex.mapMutations)('m_cart', ['updateGoodsState', 'updateGoodsCount', 'removeGoodsById'])), {}, {
     // 商品的勾选状态发生了变化
     radioChangeHandler: function radioChangeHandler(e) {
       this.updateGoodsState(e);
@@ -223,7 +243,21 @@ var _tabbarBadge = _interopRequireDefault(__webpack_require__(/*! @/mixins/tabba
     // 商品的数量发生了变化
     numberChangeHandler: function numberChangeHandler(e) {
       this.updateGoodsCount(e);
+    },
+    swipeActionClickHandler: function swipeActionClickHandler(goods) {var _this = this;
+      uni.showLoading({
+        title: '正在删除中...',
+        mask: true });
+
+      setTimeout(function () {
+        _this.removeGoodsById(goods.goods_id);
+        uni.hideLoading();
+        uni.redirectTo({
+          url: '/pages/cart/cart' });
+
+      }, 600);
     } }) };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

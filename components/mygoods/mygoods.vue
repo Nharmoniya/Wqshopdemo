@@ -48,9 +48,9 @@ export default {
 			default: false
 		},
 		//是否展示价格右侧的Numberbox组件
-		showNum:{
-			type:Boolean,
-			default:false,
+		showNum: {
+			type: Boolean,
+			default: false
 		}
 	},
 	methods: {
@@ -64,13 +64,13 @@ export default {
 				goods_state: !this.goods.goods_state
 			});
 		},
-		numChangeHandler(val){
-			this.$emit('num-change',{
+		numChangeHandler(val) {
+			this.$emit('num-change', {
 				//商品的id
-				goods_id:this.goods.goods_id,
+				goods_id: this.goods.goods_id,
 				//商品的数量
-				goods_count:+val
-			})
+				goods_count: +val
+			});
 		}
 	}
 };
@@ -78,6 +78,10 @@ export default {
 
 <style lang="scss">
 .goods-item {
+	// 让 goods-item 项占满整个屏幕的宽度
+	width: 750rpx;
+	// 设置盒模型为 border-box
+	box-sizing: border-box;
 	display: flex;
 	padding: 10px 5px;
 	border-bottom: 1px solid #f0f0f0;
@@ -96,7 +100,7 @@ export default {
 
 	.goods-item-right {
 		display: flex;
-		flex:1;
+		flex: 1;
 		flex-direction: column;
 		justify-content: space-between;
 
@@ -105,9 +109,9 @@ export default {
 		}
 
 		.goods-info-box {
-		    display: flex;
-		    align-items: center;
-		    justify-content: space-between;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 		}
 
 		.goods-price {
