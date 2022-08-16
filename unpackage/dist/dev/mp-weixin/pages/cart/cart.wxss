@@ -12,4 +12,24 @@
 .cart-title .cart-title-text {
   margin-left: 10px;
 }
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 150px;
+}
+.empty-cart .empty-img {
+  width: 90px;
+  height: 90px;
+}
+.empty-cart .tip-text {
+  font-size: 12px;
+  color: gray;
+  margin-top: 15px;
+}
+.empty-cart .tip-button {
+  margin-top: 15px;
+  font-size: 12px;
+  color: gray;
+}
 

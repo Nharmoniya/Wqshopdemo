@@ -1,5 +1,7 @@
 <template>
-	<view>
+	<view class="cart-container" v-if="cart.length !== 0">
+		<!-- 地址选择 -->
+		<my-address></my-address>
 		<!-- 购物车商品列表的标题区域 -->
 		<view class="cart-title">
 			<!-- 左侧的图标 -->
@@ -15,6 +17,12 @@
 				</uni-swipe-action-item>
 			</block>
 		</uni-swipe-action>
+	</view>
+	<!-- 空白购物车区域 -->
+	<view class="empty-cart" v-else>
+		<image src="/static/img/icon/emptycart.jpg" class="empty-img"></image>
+		<text class="tip-text">购物车空空~</text>
+		<button class="tip-button" @click="gotoCate">去逛逛</button>
 	</view>
 </template>
 
@@ -58,12 +66,16 @@ export default {
 				this.removeGoodsById(goods.goods_id);
 				uni.hideLoading();
 				uni.redirectTo({
-					url:'/pages/cart/cart'
-				})
+					url: '/pages/cart/cart'
+				});
 			}, 600);
+		},
+		gotoCate() {
+			uni.switchTab({
+				url: '/pages/cate/cate'
+			});
 		}
-	},
-
+	}
 };
 </script>
 
@@ -77,6 +89,28 @@ export default {
 	border-bottom: 1px solid #efefef;
 	.cart-title-text {
 		margin-left: 10px;
+	}
+}
+.empty-cart {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 150px;
+
+	.empty-img {
+		width: 90px;
+		height: 90px;
+	}
+
+	.tip-text {
+		font-size: 12px;
+		color: gray;
+		margin-top: 15px;
+	}
+	.tip-button {
+		margin-top: 15px;
+		font-size: 12px;
+		color: gray;
 	}
 }
 </style>

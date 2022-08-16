@@ -108,10 +108,10 @@ export default {
 		buttonClick(e) {
 			if (e.content.text === '加入购物车') {
 				uni.showLoading({
-					title:'正在加入购物车中...',
+					title: '正在加入购物车中...',
 					//使用遮罩防止穿透
-					mask:true
-				})
+					mask: true
+				});
 				const goods = {
 					goods_id: this.goods_info.goods_id, // 商品的Id
 					goods_name: this.goods_info.goods_name, // 商品的名称
@@ -121,10 +121,10 @@ export default {
 					goods_state: true // 商品的勾选状态
 				};
 				//设置延迟防止持续加入购物车
-				setTimeout(()=>{
-				  this.addToCart(goods);
-				  uni.hideLoading();
-				},500)
+				setTimeout(() => {
+					this.addToCart(goods);
+					uni.hideLoading();
+				}, 500);
 			}
 		}
 	},
@@ -208,5 +208,7 @@ swiper {
 	bottom: 0;
 	left: 0;
 	width: 100%;
+	height: 140rpx;
+	background-color: white;
 }
 </style>

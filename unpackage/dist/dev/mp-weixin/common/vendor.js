@@ -2807,13 +2807,18 @@ var _default = {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
 var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 14));
-var _cart = _interopRequireDefault(__webpack_require__(/*! ./cart.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
+var _cart = _interopRequireDefault(__webpack_require__(/*! ./cart.js */ 15));
+
+var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 161));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // 导入购物车的 vuex 模块
+// 导入用户的 vuex 模块
 _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   modules: {
-    m_cart: _cart.default } });var _default =
+    m_cart: _cart.default,
+    // 挂载用户的 vuex 模块，访问路径为 m_user
+    m_user: _user.default } });var _default =
 
 
 
@@ -4833,6 +4838,52 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 otherMixins;exports.default = _default;
+
+/***/ }),
+
+/***/ 161:
+/*!**************************************************************!*\
+  !*** C:/Users/Nature/Desktop/项目/Wqshop-demo-1/store/user.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  // 开启命名空间
+  namespaced: true,
+
+  // state 数据
+  state: function state() {return {
+      // 3. 读取本地的收货地址数据，初始化 address 对象
+      address: JSON.parse(uni.getStorageSync('address') || '{}') };},
+
+
+  // 方法
+  mutations: {
+    // 更新收货地址
+    updateAddress: function updateAddress(state, address) {
+      state.address = address;
+      // 2. 通过 this.commit() 方法，调用 m_user 模块下的 saveAddressToStorage 方法将 address 对象持久化存储到本地
+      this.commit('m_user/saveAddressToStorage');
+    },
+    // 1. 定义将 address 持久化存储到本地 mutations 方法
+    saveAddressToStorage: function saveAddressToStorage(state) {
+      uni.setStorageSync('address', JSON.stringify(state.address));
+    } },
+
+
+  // 数据包装器
+  getters: {
+    // 收货详细地址的计算属性
+    addstr: function addstr(state) {
+      if (!state.address.provinceName) return '';
+
+      // 拼接 省，市，区，详细地址 的字符串并返回给用户
+      return state.address.provinceName + state.address.cityName + state.address.countyName + state.address.
+      detailInfo;
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
