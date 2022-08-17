@@ -6,6 +6,12 @@ export default {
 	computed: {
 		...mapState('m_cart', ['cart']),
 	},
+	watch:{
+		//监听total
+		cart(){
+			this.setBadge()
+		}
+	},
 	onShow() {
 		// 在页面刚展示的时候，设置数字徽标
 		this.setBadge()

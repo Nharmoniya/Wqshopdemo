@@ -1,6 +1,9 @@
 @charset "UTF-8";
 /* 水平间距 */
 /* 水平间距 */
+.cart-container {
+  padding-bottom: 50px;
+}
 .cart-title {
   height: 40px;
   display: flex;

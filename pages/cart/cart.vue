@@ -17,6 +17,8 @@
 				</uni-swipe-action-item>
 			</block>
 		</uni-swipe-action>
+		<!-- 结算区域 -->
+		<my-settle></my-settle>
 	</view>
 	<!-- 空白购物车区域 -->
 	<view class="empty-cart" v-else>
@@ -80,6 +82,9 @@ export default {
 </script>
 
 <style lang="scss">
+.cart-container{
+	padding-bottom: 50px;
+}
 .cart-title {
 	height: 40px;
 	display: flex;
