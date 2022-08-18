@@ -49,15 +49,15 @@
     "quickapp" : {},
     /* 快应用特有相关 */
     "mp-weixin" : {
-        /* 小程序特有相关 */
         "appid" : "wxd3829f705fb6f67f",
+		"appsecret":"0436adb6e6728e7063b0fd00a0115e3f",
         "setting" : {
             "urlCheck" : false,
             "checkSiteMap" : false,
             "minified" : true
         },
         "usingComponents" : true,
-		"lazyCodeLoading":"requiredComponents"
+        "lazyCodeLoading" : "requiredComponents"
     },
     "vueVersion" : "2"
 }

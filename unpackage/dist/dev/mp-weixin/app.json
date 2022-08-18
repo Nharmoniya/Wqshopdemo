@@ -49,6 +49,7 @@
       }
     ]
   },
+  "appsecret": "0436adb6e6728e7063b0fd00a0115e3f",
   "lazyCodeLoading": "requiredComponents",
   "usingComponents": {}
 }
